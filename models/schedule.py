@@ -5,7 +5,7 @@ from models.daySchedule import DaySchedule
 from dataclasses import dataclass,field
 from typing import TypedDict
 
-class DayDict:
+class DayDict: # dictionary object of days so its is easier to retirieve
     date : str
     scheduleObject : DaySchedule
 
