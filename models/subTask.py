@@ -1,9 +1,9 @@
  # SubTask Class
  # author  : Emmanuel Ashimwe
  
-from enums.subTaskStatus import SubTaskStatus 
-from enums.subTaskPriority import SubTaskPriority
-from dataclasses import dataclass
+from enumsProj.subTaskStatus import SubTaskStatus 
+from enumsProj.subTaskPriority import SubTaskPriority
+from dataclasses import dataclass,field
 
 
 @dataclass

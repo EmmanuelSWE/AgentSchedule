@@ -3,12 +3,12 @@
 
 from models.daySchedule import DaySchedule
 from dataclasses import dataclass,field
-from typing import TypedDict
+from typing import Dict
 
-class DayDict: # dictionary object of days so its is easier to retirieve
-    date : str
-    scheduleObject : DaySchedule
 
 @dataclass
 class Schedule:
-    daySchedules : DayDict
+     daySchedules: Dict[str, DaySchedule] = field(default_factory=dict) 
+
+     def getDay(day: str):
+          pass

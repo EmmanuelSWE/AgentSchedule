@@ -1,9 +1,9 @@
 #Task class 
 # author : Emmanuel Ashimwe 222127212 
 
-from models.subTask import SubTask,field
+from models.subTask import SubTask
 from typing import List
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 
 @dataclass
 class Task: 
