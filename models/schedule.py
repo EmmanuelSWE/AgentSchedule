@@ -10,5 +10,9 @@ from typing import Dict
 class Schedule:
      daySchedules: Dict[str, DaySchedule] = field(default_factory=dict) 
 
-     def getDay(day: str):
-          pass
+     def getDay(self,day: str):
+          return self.daySchedules.get(day)
+     
+     def addDaySchedule(self, day: str, dayToAdd : DaySchedule):
+          self.daySchedules[day] = dayToAdd
+     

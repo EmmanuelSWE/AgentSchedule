@@ -5,10 +5,13 @@ from patterns.observer.absObserver import AbstractObserver
 class UserFiniteStateMachine(AbstractObserver):
     currentState : UserState
 
-    def update():
-        pass
+    def update(self, enviroment):
+        total = self.countTasks(enviroment)
 
-    def transition(state: userState):
+        enviroment.state.estimateLevels(total)
+        print("FSM Noticed the change in enviroment");
+
+    def transition(state: UserState):
         pass
 
     def updateMetrics():
@@ -16,5 +19,11 @@ class UserFiniteStateMachine(AbstractObserver):
 
     def estimateEmotionalState():
         pass
+    
+    def countTasks(self, enviroment):
+        total = 0
+        for daySched in enviroment.schedule.daySchedules.values():
+            total += len(daySched.tasks)
+        return total
     
     

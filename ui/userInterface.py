@@ -2,37 +2,42 @@
 # author : Emmanuel Ashimwe 
 
 from ui.taskController import TaskController
-
+import os 
 class userInterface:
-    controller : TaskController
+    controller : TaskController = TaskController()
     blnContinue = True
 
     def handleinput(self,input : int):
-        if(input == 1):
-            print('adding task')
-        elif(input == 2):
-            print("2. seeing tasks")
-        elif(input == 3):
-            print('exiting')
+        os.system("cls")
+        if(input == 6):
             self.blnContinue = False
+            print("shutting down good bye")
         else:
-            print("wrong input retry")
+            self.controller.handleInput(input)
+
+        
 
     def displayOptions(self):
         pass
 
     def showMenu(self):
-        os.system("cls")
+        
         print("hello this is the menu")
         print("here is the selection of choices")
         print("1. input task")
-        print("2. see tasks")
-        print("3. exit")
+        print("2. remove Task")
+        print("3. update Task")
+        print("4. show Tasks")
+        print("5. show Statusk")
+        print("6. Exit")
+    
 
     
     def run(self):
-        while(blnContinue):
+        while(self.blnContinue):
             self.showMenu()
-            self.handleinput(int(input))
+            userInput = int(input("input choice"))
+            self.handleinput(userInput)
+           
         
 
