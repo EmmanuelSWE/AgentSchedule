@@ -9,7 +9,7 @@ class userInterface:
 
     def handleinput(self,input : int):
         os.system("cls")
-        if(input == 6):
+        if(input == 7):
             self.blnContinue = False
             print("shutting down good bye")
         else:
@@ -29,7 +29,8 @@ class userInterface:
         print("3. update Task")
         print("4. show Tasks")
         print("5. show Statusk")
-        print("6. Exit")
+        print("6. add Urgent Task")
+        print("7. Exit")
     
 
     

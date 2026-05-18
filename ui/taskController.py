@@ -1,6 +1,7 @@
 # task controller class 
 # author : Emmanuel Ashimwe 
 from patterns.controller.abstractController import abstractController
+from utils.helpers import Helper
 from models.task import Task
 from models.daySchedule import DaySchedule
 from models.schedule import Schedule
@@ -24,6 +25,8 @@ class TaskController(abstractController):
             self.showTasks()
         elif val ==5:
             self.showStatus()
+        elif val ==6:
+            self.addUrgent()
         else:
             print("Invalid Option")
 
@@ -32,7 +35,7 @@ class TaskController(abstractController):
     def addTask(self):
         day = input("Enter day")
         name = input("Enter task")
-        basePriority= int(input("Enter base priority: "))
+        basePriority= Helper.validate("Enter base priority: ")
 
         task = Task(
             name = name,
@@ -49,7 +52,7 @@ class TaskController(abstractController):
         if task is None:
             return 
         
-        index = int(input("Enter task num: ")) -1 
+        index = Helper.validate("Enter task num: ") -1 
         self.enviroment.removeTask(day,index)
     
 
@@ -61,11 +64,11 @@ class TaskController(abstractController):
         if oldTask is None:
             return 
 
-        index = int(input("Enter Task to update"))-1
+        index = Helper.validate("Enter Task to update")-1
 
       
         name = input("Enter new task")
-        basePriority= int(input("Enter new base priority: "))
+        basePriority= int(Helper.validate("Enter new base priority: "))
 
         task = Task(
             name = name,
@@ -88,10 +91,20 @@ class TaskController(abstractController):
         print(f"urgencyVal: {self.enviroment.state.urgencyVal}")
         print(f"completionVal: {self.enviroment.state.completionVal}")
         print(f"neglectionVal: {self.enviroment.state.neglectionVal}")
+        print(f"lastAgentAction: {self.enviroment.lastAgentAction}")
 
    
     def addUrgent(self):
-        pass
+        day = input("Enter Day: ")
+        name = input("Enter urgetn task name: ")
+
+        task = Task(
+            name = name ,
+            basePriority= 10,
+            dynamicPriority= 10 
+        )
+
+        self.enviroment.addUrgentTask(day,task)
 
    
     def prioritizeTask(self):
