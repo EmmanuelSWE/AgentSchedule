@@ -22,7 +22,7 @@ class ModelReflexAgent(AbstractObserver):
 
     def performAction(self, action : ActionType, enviroment):
         if action == ActionType.RESCHDEULE:
-            self.rescheduleTask(enviroment)
+            self.rescheduleTasks(enviroment)
         elif action == ActionType.PRIORITIZE:
             self.prioritizeTasks(enviroment)
         elif action == ActionType.SCHEDULE:

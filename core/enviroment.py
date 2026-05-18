@@ -29,6 +29,7 @@ class Enviroment(Subject):
         # attach them
         self.attach(FSM)
         self.attach(taskAgent)
+        self.lastAgentAction = None
     
     def attach(self, observer : AbstractObserver):
         return self.observers.append(observer)
@@ -58,6 +59,14 @@ class Enviroment(Subject):
             return
         
         self.lastEvent = "REMOVE_TASK"
+        self.notify()
+
+    def addUrgentTask(self, day : str, task : Task):
+        daySched = self.schedule.getDay(day)
+
+        daySched.tasks.append(task)
+
+        self.lastEvent = "ADD_URGENT"
         self.notify()
 
     def updateTask(self, day : str, index : int, task : Task):
